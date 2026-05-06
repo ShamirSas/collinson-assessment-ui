@@ -1,0 +1,23 @@
+#root {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.ranking-sticky {
+  position: sticky;
+  top: 1rem;
+}
+
+.search-sticky {
+  position: sticky;
+  top: 1rem;
+}
+
+.location-result-button {
+  border-radius: 0;
+  transition: background-color 0.2s ease;
+}
+
+.location-result-button:not(:disabled):hover {
+  background-color: #e9ecef;
+}

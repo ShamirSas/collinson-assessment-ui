@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/locationrankingresults.tsx","./src/components/locationsearchform.tsx","./src/components/locationsearchresults.tsx","./src/graphql/getlocations.query.ts","./src/graphql/getranking.query.ts","./src/lib/apolloclient.ts","./src/types/locationsearch.ts","./src/types/ranking.ts"],"version":"5.9.3"}
