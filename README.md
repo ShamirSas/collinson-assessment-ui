@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# collinson-assessment-ui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front-end for the Collinson assessment: a React + TypeScript single-page app built with Vite. Users search for cities or towns via GraphQL (`getLocations`), browse results, and select a location to load activity rankings (`getRanking`). The UI uses Bootstrap 5 for layout, SCSS for styling, and Apollo Client to talk to the assessment GraphQL API.
 
-Currently, two official plugins are available:
+## Checkout and run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the repository and enter the UI project directory:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/ShamirSas/collinson-assessment-ui
+cd collinson-assessment-ui
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
 ```
+
+3. Configure the GraphQL endpoint (optional). Copy the example env file and adjust if your API is not on the default URL:
+
+```bash
+cp .env.example .env
+```
+
+By default the app uses `http://localhost:4000/graphql` when `VITE_GRAPHQL_ENDPOINT` is unset. Ensure the assessment GraphQL API (`ShamirSas-collinson-assessment-api`) is running (see that project’s README) so queries succeed.
+
+4. Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the URL Vite prints in the terminal (typically `http://localhost:5173`).
+
+5. Production build (optional):
+
+```bash
+npm run build
+npm run preview
+```
+
+`preview` serves the contents of `dist/` locally so you can verify the production bundle.
+
+## package.json scripts
+
+| Script | Command | What it does |
+|--------|---------|----------------|
+| `dev` | `vite` | Starts the Vite dev server with hot module replacement (HMR) for fast local development. |
+| `build` | `tsc -b && vite build` | Runs the TypeScript project build, then produces an optimized static bundle in `dist/`. |
+| `lint` | `eslint .` | Runs ESLint across the project using the repo’s ESLint configuration. |
+| `preview` | `vite preview` | Serves the production build from `dist/` (run `npm run build` first). |
+
+## Tech stack (summary)
+
+- **React 18** and **TypeScript**
+- **Vite** for bundling and dev server
+- **Apollo Client** + **GraphQL** for API calls
+- **Bootstrap 5** and **Sass** for UI and styles
